@@ -51,7 +51,9 @@ int main(){
     bzero(&server_addr,sizeof(server_addr));
     server_addr.sin_family = AF_INET;
     server_addr.sin_port = htons(PORT);
-    
+    server_addr.sin_addr.s_addr = INADDR_ANY;
+
+
     bind(sockfd,(struct sockaddr*)&server_addr,sizeof(server_addr));
 
     listen(sockfd,20);
@@ -118,7 +120,7 @@ int main(){
         }
     }
     close(sockfd);
-    return 1;
+    return 0;
 
 }
 
